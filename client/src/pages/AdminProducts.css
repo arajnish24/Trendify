@@ -1,0 +1,99 @@
+.admin-products-page {
+    padding: 40px 0;
+    background-color: var(--admin-bg);
+}
+
+.prod-table-img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.category-tag {
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 4px 8px;
+    background: #f0f0f0;
+    color: #666;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+}
+
+.stock-status {
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.stock-status.low { color: var(--admin-danger); }
+.stock-status.ok { color: var(--admin-success); }
+
+.table-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.table-actions button {
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    cursor: pointer;
+    background: white;
+    transition: all 0.2s ease;
+}
+
+.edit-btn:hover { background: #f0f9ff; color: #3498db; border-color: #3498db; }
+.delete-btn:hover { background: #fff5f5; color: #e74c3c; border-color: #e74c3c; }
+
+/* Edit Overlay */
+.edit-overlay {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1001;
+    width: 90%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+    border: 2px solid var(--admin-primary);
+}
+
+.edit-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #888;
+}
+
+.admin-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.full-span {
+    grid-column: span 2;
+}
+
+@media (max-width: 768px) {
+    .admin-form-grid {
+        grid-template-columns: 1fr;
+    }
+    .full-span {
+        grid-column: span 1;
+    }
+}

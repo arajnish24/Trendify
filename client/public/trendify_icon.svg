@@ -1,0 +1,50 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&amp;display=swap');
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="512" height="512" rx="112" fill="#faf7f0"/>
+
+  <!-- Gold border -->
+  <rect x="4" y="4" width="504" height="504" rx="110" fill="none" stroke="#c9a84c" stroke-width="6"/>
+
+  <!-- Corner ornaments -->
+  <polyline points="36,36 36,72" fill="none" stroke="#c9a84c" stroke-width="3" stroke-linecap="round"/>
+  <polyline points="36,36 72,36" fill="none" stroke="#c9a84c" stroke-width="3" stroke-linecap="round"/>
+
+  <polyline points="476,36 476,72" fill="none" stroke="#c9a84c" stroke-width="3" stroke-linecap="round"/>
+  <polyline points="476,36 440,36" fill="none" stroke="#c9a84c" stroke-width="3" stroke-linecap="round"/>
+
+  <polyline points="36,476 36,440" fill="none" stroke="#c9a84c" stroke-width="3" stroke-linecap="round"/>
+  <polyline points="36,476 72,476" fill="none" stroke="#c9a84c" stroke-width="3" stroke-linecap="round"/>
+
+  <polyline points="476,476 476,440" fill="none" stroke="#c9a84c" stroke-width="3" stroke-linecap="round"/>
+  <polyline points="476,476 440,476" fill="none" stroke="#c9a84c" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Crown -->
+  <polyline points="116,310 176,120 256,220 336,80 396,168"
+    fill="none" stroke="#c9a84c" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="116" y1="310" x2="396" y2="310" stroke="#c9a84c" stroke-width="6"/>
+  <circle cx="116" cy="310" r="10" fill="#c9a84c"/>
+  <circle cx="256" cy="220" r="10" fill="#c9a84c"/>
+  <circle cx="396" cy="310" r="10" fill="#c9a84c"/>
+  <circle cx="176" cy="120" r="6" fill="#c9a84c" opacity="0.5"/>
+  <circle cx="336" cy="80" r="6" fill="#c9a84c" opacity="0.5"/>
+
+  <!-- Gold rule top -->
+  <line x1="106" y1="332" x2="406" y2="332" stroke="#c9a84c" stroke-width="2" opacity="0.6"/>
+
+  <!-- T Monogram -->
+  <text x="256" y="460"
+    font-family="'Playfair Display', Georgia, serif"
+    font-weight="900"
+    font-size="168"
+    text-anchor="middle"
+    fill="#1c1c1c">T</text>
+
+  <!-- Gold rule bottom -->
+  <line x1="106" y1="474" x2="406" y2="474" stroke="#c9a84c" stroke-width="2" opacity="0.6"/>
+</svg>

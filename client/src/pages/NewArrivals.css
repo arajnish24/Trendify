@@ -1,0 +1,162 @@
+.new-arrivals-page {
+    padding: 80px 0;
+}
+
+.new-arrivals-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.announcement-text {
+    max-width: 700px;
+    margin: 20px auto 0;
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    line-height: 1.7;
+}
+
+.announcement-text strong {
+    color: var(--primary);
+    display: block;
+    margin-top: 15px;
+    letter-spacing: 1px;
+}
+
+.newsletter-box {
+    background-color: var(--bg-light);
+    padding: 60px 40px;
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.newsletter-box h3 {
+    font-size: 1.2rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+}
+
+.newsletter-box p {
+    color: var(--text-muted);
+    margin-bottom: 30px;
+}
+
+.newsletter-inline {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.newsletter-inline input {
+    flex: 1;
+    padding: 12px 20px;
+    border: 1px solid var(--border);
+    outline: none;
+}
+
+.recent-grid-section {
+    margin-bottom: 80px;
+}
+
+.section-subtitle {
+    font-size: 1.3rem;
+    font-weight: 800;
+    text-align: center;
+    letter-spacing: 2px;
+    margin-bottom: 40px;
+}
+
+.new-product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.new-product-card {
+    border: 1px solid var(--border);
+    padding: 20px;
+    transition: box-shadow 0.3s;
+}
+
+.new-product-card:hover {
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.img-holder {
+    position: relative;
+    height: 350px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.img-holder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.new-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: var(--accent);
+    color: white;
+    padding: 5px 12px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    border-radius: 20px;
+}
+
+.cat-tag {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+.info-holder h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    height: 45px;
+}
+
+.price-tag {
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    color: var(--primary);
+}
+
+.add-to-cart-simple {
+    width: 100%;
+    padding: 12px;
+    background: var(--primary);
+    color: var(--secondary);
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-size: 0.8rem;
+}
+
+.shop-all-cta {
+    text-align: center;
+    margin-top: 60px;
+}
+
+@media (max-width: 900px) {
+    .new-product-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .new-product-grid {
+        grid-template-columns: 1fr;
+    }
+    .newsletter-inline {
+        flex-direction: column;
+    }
+}

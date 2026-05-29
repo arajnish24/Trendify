@@ -1,0 +1,66 @@
+.address-page {
+    padding: 60px 0;
+}
+
+.address-form-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.address-card {
+    background: white;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+}
+
+.address-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group.full-width {
+    grid-column: span 2;
+}
+
+.form-group label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #444;
+}
+
+.form-group input {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+.address-actions {
+    grid-column: span 2;
+    margin-top: 20px;
+}
+
+@media (max-width: 600px) {
+    .address-form {
+        grid-template-columns: 1fr;
+    }
+    .form-group.full-width {
+        grid-column: span 1;
+    }
+    .address-actions {
+        grid-column: span 1;
+    }
+}
