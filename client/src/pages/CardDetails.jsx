@@ -27,7 +27,7 @@ const CardDetails = () => {
         setLoading(true);
 
         try {
-            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/users/cards`, {
+            const response = await fetch(`/api/users/cards`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -58,7 +58,7 @@ const CardDetails = () => {
     const handleDeleteCard = async (cardId) => {
         if (window.confirm("Remove this card?")) {
             try {
-                const response = await fetch(`${import.meta.env.VITE_API_URL}/api/users/cards/${cardId}`, {
+                const response = await fetch(`/api/users/cards/${cardId}`, {
                     method: 'DELETE',
                     headers: { 'Authorization': `Bearer ${token}` }
                 });

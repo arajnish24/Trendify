@@ -42,8 +42,8 @@ const Address = () => {
 
         try {
             const url = editingId 
-                ? `${import.meta.env.VITE_API_URL}/api/users/addresses/${editingId}`
-                : `${import.meta.env.VITE_API_URL}/api/users/addresses`;
+                ? `/api/users/addresses/${editingId}`
+                : `/api/users/addresses`;
             
             const method = editingId ? 'PUT' : 'POST';
 
@@ -94,7 +94,7 @@ const Address = () => {
     const handleDeleteAddress = async (addressId) => {
         if (window.confirm("Delete this address?")) {
             try {
-                const response = await fetch(`${import.meta.env.VITE_API_URL}/api/users/addresses/${addressId}`, {
+                const response = await fetch(`/api/users/addresses/${addressId}`, {
                     method: 'DELETE',
                     headers: { 'Authorization': `Bearer ${token}` }
                 });

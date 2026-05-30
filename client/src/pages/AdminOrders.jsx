@@ -12,7 +12,7 @@ const AdminOrders = () => {
     useEffect(() => {
         const fetchOrders = async () => {
             try {
-                const response = await fetch(`${import.meta.env.VITE_API_URL}/api/orders`, {
+                const response = await fetch(`/api/orders`, {
                     headers: { Authorization: `Bearer ${token}` }
                 });
                 const data = await response.json();
@@ -38,7 +38,7 @@ const AdminOrders = () => {
 
     const handleStatusUpdate = async (orderId, newStatus) => {
         try {
-            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/orders/${orderId}`, {
+            const response = await fetch(`/api/orders/${orderId}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -57,7 +57,7 @@ const AdminOrders = () => {
 
     const handleExpectedDateUpdate = async (orderId, date) => {
         try {
-            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/orders/${orderId}`, {
+            const response = await fetch(`/api/orders/${orderId}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

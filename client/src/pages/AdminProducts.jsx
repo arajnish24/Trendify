@@ -17,11 +17,10 @@ const AdminProducts = () => {
     });
     const { token } = useAuth();
     const navigate = useNavigate();
-    const backendUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
     const fetchProducts = async () => {
         try {
-            const response = await fetch(`${backendUrl}/api/products`);
+            const response = await fetch(`/api/products`);
             const data = await response.json();
             setProducts(Array.isArray(data) ? data : []);
         } catch (err) {
@@ -49,7 +48,7 @@ const AdminProducts = () => {
         }
 
         try {
-            const response = await fetch(`${backendUrl}/api/products/${currentProduct._id}`, {
+            const response = await fetch(`/api/products/${currentProduct._id}`, {
                 method: 'PUT',
                 headers: {
                     'Authorization': `Bearer ${token}`
@@ -70,7 +69,7 @@ const AdminProducts = () => {
     const handleDelete = async (id) => {
         if (window.confirm("Delete this product permanently?")) {
             try {
-                const response = await fetch(`${backendUrl}/api/products/${id}`, {
+                const response = await fetch(`/api/products/${id}`, {
                     method: 'DELETE',
                     headers: { 'Authorization': `Bearer ${token}` }
                 });
@@ -156,7 +155,7 @@ const AdminProducts = () => {
                                         <tr key={p._id}>
                                             <td>
                                                 <img 
-                                                    src={(p.image || '').startsWith('http') ? p.image : `${backendUrl}${p.image}`} 
+                                                    src={(p.image || '').startsWith('http') ? p.image : p.image} 
                                                     alt={p.name} 
                                                     className="prod-table-img" 
                                                 />

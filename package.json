@@ -3,9 +3,12 @@
   "version": "1.0.0",
   "description": "Root for Food Restaurant project",
   "scripts": {
-    "server": "npm run dev --prefix server",
-    "client": "npm run dev --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "install-server": "npm install --prefix server",
+    "install-client": "npm install --prefix client",
+    "build-client": "npm run build --prefix client",
+    "build": "npm run install-server && npm run install-client && npm run build-client",
+    "start": "node server/server.js",
+    "dev": "concurrently \"npm run dev --prefix server\" \"npm run dev --prefix client\""
   },
   "devDependencies": {
     "concurrently": "^9.1.2"

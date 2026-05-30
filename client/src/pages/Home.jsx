@@ -7,12 +7,11 @@ const Home = () => {
     const [trendingProducts, setTrendingProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const { user } = useAuth();
-    const backendUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
     useEffect(() => {
         const fetchTrending = async () => {
             try {
-                const response = await fetch(`${backendUrl}/api/products`);
+                const response = await fetch(`/api/products`);
                 if (response.ok) {
                     const data = await response.json();
                     setTrendingProducts(data.slice(0, 4));
@@ -91,7 +90,7 @@ const Home = () => {
                             {trendingProducts.map(product => (
                                 <Link to="/products" key={product._id} className="trending-item">
                                     <div className="trending-img-wrapper">
-                                        <img src={product.image.startsWith('http') ? product.image : `${backendUrl}${product.image}`} alt={product.name} onError={imageFallback} />
+                                        <img src={product.image.startsWith('http') ? product.image : product.image} alt={product.name} onError={imageFallback} />
                                         {product.countInStock > 0 && <span className="sale-tag">SALE</span>}
                                         {product.countInStock === 0 && <span className="sale-tag" style={{backgroundColor: '#666'}}>OUT OF STOCK</span>}
                                     </div>
@@ -144,7 +143,7 @@ const Home = () => {
                         e.preventDefault();
                         const email = e.target.elements[0].value;
                         try {
-                            const response = await fetch(`${backendUrl}/api/subscribers`, {
+                            const response = await fetch(`/api/subscribers`, {
                                 method: 'POST',
                                 headers: { 'Content-Type': 'application/json' },
                                 body: JSON.stringify({ email })

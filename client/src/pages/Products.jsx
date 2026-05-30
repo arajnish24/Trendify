@@ -11,11 +11,10 @@ const Products = () => {
 
     const { addToCart } = useCart();
     const { user } = useAuth();
-    const backendUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
     const fetchProducts = async () => {
         try {
-            const response = await fetch(`${backendUrl}/api/products`);
+            const response = await fetch("/api/products");
             if (!response.ok) {
                 throw new Error('Failed to fetch products');
             }
@@ -50,7 +49,7 @@ const Products = () => {
                             <div key={product._id} className="product-card">
                                 <div className="product-image-wrapper">
                                     <img 
-                                        src={product.image.startsWith('http') ? product.image : `${backendUrl}${product.image}`} 
+                                        src={product.image.startsWith('http') ? product.image : product.image} 
                                         alt={product.name} 
                                         onError={(e) => {
                                             e.target.onerror = null; 

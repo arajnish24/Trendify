@@ -8,14 +8,13 @@ const Cart = () => {
     const { cart, total, handlingFee, deliveryCharge, finalTotal, removeFromCart, updateQty } = useCart();
     const { user, loading } = useAuth();
     const navigate = useNavigate();
-    const backendUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
     const [suggestions, setSuggestions] = useState([]);
 
     useEffect(() => {
         const fetchSuggestions = async () => {
             try {
-                const response = await fetch(`${backendUrl}/api/products`);
+                const response = await fetch(`/api/products`);
                 const data = await response.json();
                 // Get 4 random products
                 const shuffled = data.sort(() => 0.5 - Math.random());
@@ -28,7 +27,7 @@ const Cart = () => {
         if (cart.length === 0) {
             fetchSuggestions();
         }
-    }, [cart.length, backendUrl]);
+    }, [cart.length]);
 
     useEffect(() => {
         if (!loading) {
@@ -62,7 +61,7 @@ const Cart = () => {
                             <div className="products-grid" style={{gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))'}}>
                                 {(Array.isArray(suggestions) ? suggestions : []).map(product => {
                                     if (!product) return null;
-                                    const imgUrl = (product.image || '').startsWith('http') ? product.image : `${backendUrl}${product.image}`;
+                                    const imgUrl = (product.image || '').startsWith('http') ? product.image : product.image;
                                     return (
                                         <div key={product._id} className="product-card" onClick={() => navigate('/products')}>
                                             <div className="product-image">
@@ -98,7 +97,7 @@ const Cart = () => {
                         
                         {(Array.isArray(cart) ? cart : []).map(item => {
                             if (!item) return null;
-                            const itemImg = (item.image || '').startsWith('http') ? item.image : `${backendUrl}${item.image}`;
+                            const itemImg = (item.image || '').startsWith('http') ? item.image : item.image;
                             return (
                                 <div key={item._id} className="cart-item">
                                     <div className="item-main">

@@ -25,7 +25,7 @@ const MyOrders = () => {
     const fetchOrders = async () => {
       try {
         const response = await fetch(
-          `${import.meta.env.VITE_API_URL}/api/orders/myorders`,
+          "/api/orders/myorders",
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -333,9 +333,10 @@ const MyOrders = () => {
                           src={
                             (item.image || "").startsWith("http")
                               ? item.image
-                              : `${import.meta.env.VITE_API_URL}${item.image}`
+                              : item.image
                           }
                           alt={item.name}
+
                           style={{
                             width: "50px",
                             height: "60px",

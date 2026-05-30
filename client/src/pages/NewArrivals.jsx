@@ -9,12 +9,11 @@ const NewArrivals = () => {
     const [loading, setLoading] = useState(true);
     const { addToCart } = useCart();
     const { user } = useAuth();
-    const backendUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
     useEffect(() => {
         const fetchNewArrivals = async () => {
             try {
-                const response = await fetch(`${backendUrl}/api/products`);
+                const response = await fetch("/api/products");
                 if (response.ok) {
                     const data = await response.json();
                     // Assume last items are new arrivals
@@ -52,7 +51,7 @@ const NewArrivals = () => {
                         e.preventDefault();
                         const email = e.target.elements[0].value;
                         try {
-                            const response = await fetch(`${backendUrl}/api/subscribers`, {
+                            const response = await fetch("/api/subscribers", {
                                 method: 'POST',
                                 headers: { 'Content-Type': 'application/json' },
                                 body: JSON.stringify({ email })
@@ -78,7 +77,7 @@ const NewArrivals = () => {
                             {newProducts.map(product => (
                                 <div key={product._id} className="new-product-card">
                                     <div className="img-holder">
-                                        <img src={product.image.startsWith('http') ? product.image : `${backendUrl}${product.image}`} alt={product.name} onError={imageFallback} />
+                                        <img src={product.image.startsWith('http') ? product.image : product.image} alt={product.name} onError={imageFallback} />
                                         <span className="new-badge">NEW</span>
                                     </div>
                                     <div className="info-holder">

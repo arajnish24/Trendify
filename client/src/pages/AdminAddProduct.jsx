@@ -15,7 +15,6 @@ const AdminAddProduct = () => {
     });
     const { token } = useAuth();
     const navigate = useNavigate();
-    const backendUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -32,7 +31,7 @@ const AdminAddProduct = () => {
         }
 
         try {
-            const response = await fetch(`${backendUrl}/api/products`, {
+            const response = await fetch(`/api/products`, {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${token}`
