@@ -7,6 +7,18 @@ const Address = () => {
     const { user, token, fetchProfile, loading: authLoading } = useAuth();
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
+    const [editingId, setEditingId] = useState(null);
+    const [newAddress, setNewAddress] = useState({
+        name: '',
+        mobile: '',
+        area: '',
+        landmark: '',
+        city: '',
+        district: '',
+        state: '',
+        pincode: ''
+    });
+
     const addresses = user?.addresses || [];
     const [showForm, setShowForm] = useState(false);
 

@@ -354,25 +354,27 @@ const Payment = () => {
             {/* ITEMS */}
             <div className="payment-items-card">
               <h3 className="payment-items-title">ITEMS IN YOUR BAG</h3>
-              {cart.map((item) => (
-                <div key={item._id} className="payment-item">
-                  <img
-                    src={
-                      item.image.startsWith("http")
+              {(Array.isArray(cart) ? cart : []).map((item) => {
+                if (!item) return null;
+                const itemImg = (item.image || '').startsWith("http")
                         ? item.image
-                        : `http://localhost:5000${item.image}`
-                    }
-                    alt={item.name}
-                    className="payment-item-img"
-                  />
-                  <div>
-                    <h4 className="payment-item-name">{item.name}</h4>
-                    <p className="payment-item-price">
-                      Qty: {item.qty} | ₹{item.price.toFixed(2)}
-                    </p>
+                        : `http://localhost:5000${item.image}`;
+                return (
+                  <div key={item._id} className="payment-item">
+                    <img
+                      src={itemImg}
+                      alt={item.name || 'Item'}
+                      className="payment-item-img"
+                    />
+                    <div>
+                      <h4 className="payment-item-name">{item.name || 'Unknown Item'}</h4>
+                      <p className="payment-item-price">
+                        Qty: {item.qty || 0} | ₹{(item.price || 0).toFixed(2)}
+                      </p>
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
 

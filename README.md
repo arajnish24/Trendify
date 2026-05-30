@@ -1,67 +1,87 @@
 # Trendify - Food Restaurant & Ecommerce Platform
 
-Trendify is a comprehensive full-stack MERN (MongoDB, Express, React, Node.js) application designed for a modern food restaurant and ecommerce experience. It features a robust product management system, secure user authentication, an integrated shopping cart, and a seamless checkout process with payment gateway integration.
+Trendify is a modern, full-stack MERN (MongoDB, Express, React, Node.js) application designed for a seamless food restaurant and ecommerce experience. It features a robust product management system, secure user authentication, an integrated shopping cart, and a multi-stage order tracking system with payment gateway integration.
+
+---
 
 ## 🏗️ Architecture Overview
 
-The project follows a decoupled **Client-Server architecture**:
+Trendify is built using a **Decoupled Client-Server Architecture**, ensuring scalability and clear separation of concerns.
 
--   **Frontend (Client):** A dynamic Single Page Application (SPA) built with **React** and **Vite**. It manages state using the **Context API** for authentication and shopping cart functionality, providing a fast and responsive user experience.
--   **Backend (Server):** A RESTful API built with **Node.js** and **Express**. It handles business logic, database interactions via **Mongoose**, and secure authentication using **JWT**.
--   **Database:** **MongoDB** serves as the primary data store, using schemas to ensure data integrity for Users, Products, Orders, and Subscribers.
+### 🎨 Frontend (Client)
+- **Framework:** React 19 (managed with Vite for ultra-fast builds).
+- **Routing:** React Router 7 for dynamic, client-side navigation.
+- **State Management:** React Context API for centralized **Auth** and **Cart** state.
+- **Styling:** Modular CSS3 with a focus on responsiveness and professional aesthetics.
+- **Persistence:** `localStorage` integration for persistent user sessions and cart data.
+
+### ⚙️ Backend (Server)
+- **Environment:** Node.js with Express 5 framework.
+- **Database:** MongoDB for flexible, document-based data storage, interfaced via Mongoose.
+- **Security:** JWT (JSON Web Tokens) for stateless authentication and Bcrypt.js for secure password hashing.
+- **File Handling:** Multer for managing product image uploads.
+- **Payments:** Integrated Razorpay API for secure online transactions.
 
 ---
 
 ## 🚀 Key Features
 
-### 👤 User Experience
--   **Secure Authentication:** JWT-based registration and login with encrypted passwords (bcrypt).
--   **Dynamic Product Catalog:** Browse and filter products across multiple categories (Bags, Decorations, Woolen Clothes, etc.).
--   **Advanced Shopping Cart:** Real-time quantity updates, persistent storage (localStorage), and smart product suggestions when empty.
--   **Comprehensive Checkout:**
-    -   Multiple address management.
-    -   Secure online payments via **Razorpay integration**.
-    -   **Cash on Delivery (COD)** support with automated handling fees.
--   **Order Lifecycle Tracking:**
-    -   Interactive timeline (Placed ➔ Shipped ➔ Delivered).
-    -   Support for **Returns** and **Replacements** with reason tracking.
-    -   Contextual status updates and notifications.
+### 👤 Customer Experience
+*   **Secure Authentication:** JWT-based login/register system with role-based access control.
+*   **Dynamic Catalog:** Browse products across multiple categories with real-time stock validation.
+*   **Advanced Cart System:** 
+    *   Real-time quantity updates.
+    *   Smart suggestions (4 random products) when the cart is empty.
+    *   Persistence across browser sessions.
+*   **Checkout & Payments:**
+    *   Multiple address management.
+    *   **Online Payment:** Razorpay integration for instant transactions.
+    *   **COD Support:** Cash on Delivery with an automated ₹9.00 handling fee.
+*   **Order Lifecycle Tracking:**
+    *   **Visual Timeline:** Track orders through *Placed ➔ Shipped ➔ Delivered*.
+    *   **Post-Delivery Actions:** Request **Returns** or **Replacements** with mandatory reason tracking.
+    *   **Real-time Notifications:** Contextual banners for admin updates and next steps.
 
 ### 🛡️ Admin Suite
--   **Centralized Dashboard:** Real-time analytics for sales, orders, and customer metrics.
--   **Inventory Management:** Full CRUD operations for products, including automated image uploads (Multer) and low-stock indicators.
--   **Order Fulfillment:** A powerful management interface to track and update order statuses (15+ states supported).
--   **Customer Directory:** Detailed view of registered users and their contact information.
+*   **Analytics Dashboard:** Live tracking of Total Sales, Orders, Customers, and Product metrics.
+*   **Inventory Management:** Full CRUD operations for products with "Low Stock" indicators.
+*   **Order Fulfillment:** Comprehensive management interface for 15+ order statuses (Pending, Shipped, Refunded, etc.).
+*   **Customer Directory:** Centralized list of all registered users with formatted contact details.
+*   **Role-Based Security:** Protected `AdminRoute` wrapper ensures sensitive management pages are only accessible to authorized accounts.
 
 ---
 
 ## 🛠️ Tech Stack
 
--   **Frontend:** React 19, Vite, React Router 7, Context API, CSS3.
--   **Backend:** Node.js, Express 5.
--   **Database:** MongoDB, Mongoose.
--   **Authentication:** JSON Web Tokens (JWT), Bcrypt.js.
--   **File Uploads:** Multer.
--   **Payments:** Razorpay API.
+| Layer | Technologies |
+| :--- | :--- |
+| **Frontend** | React 19, Vite, React Router 7, Context API, CSS3 |
+| **Backend** | Node.js, Express 5, JWT, Bcrypt.js, Multer |
+| **Database** | MongoDB, Mongoose |
+| **Payments** | Razorpay API |
+| **Tools** | ESLint, Nodemon, Git |
 
 ---
 
 ## 📂 Project Structure
 
 ```text
-├── client/                # React frontend
+├── client/                # React frontend (Vite)
+│   ├── public/            # Static assets (icons, logos)
 │   ├── src/
-│   │   ├── components/    # Reusable UI elements (Navbar, Footer, etc.)
+│   │   ├── components/    # UI elements (Navbar, Footer, AdminRoute)
 │   │   ├── context/       # Global state (AuthContext, CartContext)
-│   │   ├── pages/         # Page components (Home, Products, Admin panels)
-│   │   └── App.jsx        # Routing configuration
+│   │   ├── pages/         # Feature-specific views (Home, Cart, AdminDashboard)
+│   │   ├── data/          # Local data constants
+│   │   └── App.jsx        # Routing and provider configuration
 ├── server/                # Express backend
-│   ├── controllers/       # Business logic for API endpoints
-│   ├── models/            # Mongoose schemas (User, Product, Order, Subscriber)
-│   ├── routes/            # API route definitions
-│   ├── middleware/        # Authentication and file upload handlers
+│   ├── controllers/       # Request handlers and business logic
+│   ├── models/            # Mongoose schemas (User, Product, Order)
+│   ├── routes/            # API endpoint definitions
+│   ├── middleware/        # Auth & Upload handlers
 │   ├── init/              # Database seeding scripts
-│   └── server.js          # Main entry point
+│   └── server.js          # Entry point
+└── FEATURES_REFERENCE.md  # Detailed implementation notes
 ```
 
 ---
@@ -69,67 +89,66 @@ The project follows a decoupled **Client-Server architecture**:
 ## 🏁 Getting Started
 
 ### Prerequisites
--   **Node.js** (v18 or higher recommended)
--   **MongoDB** (Local instance or MongoDB Atlas)
--   **Razorpay Account** (for API keys)
+- **Node.js** (v18+)
+- **MongoDB** (Local or Atlas)
+- **Razorpay Account** (for API keys)
 
-### 1. Clone the Repository
+### 1. Clone & Install
 ```bash
 git clone <repository-url>
 cd food-restaurant
+
+# Install Backend Dependencies
+cd server
+npm install
+
+# Install Frontend Dependencies
+cd ../client
+npm install
 ```
 
-### 2. Backend Setup
-1.  Navigate to the server directory:
-    ```bash
-    cd server
-    ```
-2.  Install dependencies:
-    ```bash
-    npm install
-    ```
-3.  Create a `.env` file in the `server` directory:
-    ```env
-    PORT=5000
-    MONGODB_URI=your_mongodb_connection_string
-    JWT_SECRET=your_jwt_secret
-    RAZORPAY_KEY_ID=your_razorpay_key_id
-    RAZORPAY_KEY_SECRET=your_razorpay_key_secret
-    ```
-4.  **Initialize the Database** (Seed with sample products):
-    ```bash
-    node init/index.js
-    ```
-5.  Start the development server:
-    ```bash
-    npm run dev
-    ```
+### 2. Environment Setup
+Create a `.env` file in the `server/` directory:
+```env
+PORT=5000
+MONGODB_URI=your_mongodb_uri
+JWT_SECRET=your_secret_key
+RAZORPAY_KEY_ID=your_razorpay_key
+RAZORPAY_KEY_SECRET=your_razorpay_secret
+```
 
-### 3. Frontend Setup
-1.  Open a new terminal and navigate to the client directory:
-    ```bash
-    cd client
-    ```
-2.  Install dependencies:
-    ```bash
-    npm install
-    ```
-3.  Start the development server:
-    ```bash
-    npm run dev
-    ```
-4.  Access the application at `http://localhost:5173`.
+### 3. Initialize Database
+Seed the database with sample products:
+```bash
+cd server
+node init/index.js
+```
+
+### 4. Run the Application
+You can launch both the **Client** and **Server** simultaneously with a single command from the project root:
+
+```bash
+npm run dev
+```
+
+*Alternatively, to run them separately:*
+- **Backend:** `cd server && npm run dev`
+- **Frontend:** `cd client && npm run dev`
+
+*Access the app at `http://localhost:5173`*
 
 ---
 
-## 📡 API Endpoints (Quick Reference)
+## 📡 API Endpoints (Summary)
 
--   `POST /api/users/register` - Register a new user
--   `POST /api/users/login` - User login
--   `GET /api/products` - Fetch all products
--   `POST /api/orders` - Create a new order
--   `GET /api/orders/myorders` - Fetch logged-in user's orders
--   `POST /api/payment/verify` - Verify Razorpay payment signature
+| Method | Endpoint | Description |
+| :--- | :--- | :--- |
+| `POST` | `/api/users/register` | Create a new user account |
+| `POST` | `/api/users/login` | Authenticate user & receive JWT |
+| `GET` | `/api/products` | Fetch all available products |
+| `POST` | `/api/orders` | Create a new order (COD/Online) |
+| `PATCH` | `/api/orders/:id/status` | (Admin) Update order status |
+| `POST` | `/api/payment/order` | Create Razorpay order |
 
 ---
 

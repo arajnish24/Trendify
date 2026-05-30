@@ -69,16 +69,24 @@ export const AuthProvider = ({ children }) => {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email, password })
             });
-            const data = await response.json();
+            
+            let data;
+            try {
+                data = await response.json();
+            } catch (e) {
+                return { success: false, message: `Server error: ${response.status} ${response.statusText}` };
+            }
+
             if (response.ok) {
                 setToken(data.token);
                 localStorage.setItem('token', data.token);
                 return { success: true };
             } else {
-                return { success: false, message: data.message };
+                return { success: false, message: data.message || "Login failed" };
             }
         } catch (error) {
-            return { success: false, message: "Server connection failed." };
+            console.error("Login error:", error);
+            return { success: false, message: "Server connection failed. Please ensure the backend is running." };
         }
     };
 
@@ -89,16 +97,23 @@ export const AuthProvider = ({ children }) => {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ name, email, mobile, password })
             });
-            const data = await response.json();
+            
+            let data;
+            try {
+                data = await response.json();
+            } catch (e) {
+                return { success: false, message: `Server error: ${response.status} ${response.statusText}` };
+            }
+
             if (response.ok) {
-                setToken(data.token);
-                localStorage.setItem('token', data.token);
+                // Return success without setting token or logging in automatically
                 return { success: true };
             } else {
-                return { success: false, message: data.message };
+                return { success: false, message: data.message || "Registration failed" };
             }
         } catch (error) {
-            return { success: false, message: "Server connection failed." };
+            console.error("Register error:", error);
+            return { success: false, message: "Server connection failed. Please ensure the backend is running." };
         }
     };
 

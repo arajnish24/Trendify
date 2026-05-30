@@ -1,0 +1,13 @@
+{
+  "name": "food-restaurant-root",
+  "version": "1.0.0",
+  "description": "Root for Food Restaurant project",
+  "scripts": {
+    "server": "npm run dev --prefix server",
+    "client": "npm run dev --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
