@@ -12,7 +12,7 @@ const AdminCustomers = () => {
     useEffect(() => {
         const fetchUsers = async () => {
             try {
-                const response = await fetch('http://localhost:5000/api/users', {
+                const response = await fetch(`${import.meta.env.VITE_API_URL}/api/users`, {
                     headers: { Authorization: `Bearer ${token}` }
                 });
                 const data = await response.json();

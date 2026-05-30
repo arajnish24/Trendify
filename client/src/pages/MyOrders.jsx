@@ -25,7 +25,7 @@ const MyOrders = () => {
     const fetchOrders = async () => {
       try {
         const response = await fetch(
-          "http://localhost:5000/api/orders/myorders",
+          `${import.meta.env.VITE_API_URL}/api/orders/myorders`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -74,7 +74,7 @@ const MyOrders = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/orders/${orderId}`,
+        `${import.meta.env.VITE_API_URL}/api/orders/${orderId}`,
         {
           method: "PUT",
           headers: {
@@ -333,7 +333,7 @@ const MyOrders = () => {
                           src={
                             (item.image || "").startsWith("http")
                               ? item.image
-                              : `http://localhost:5000${item.image}`
+                              : `${import.meta.env.VITE_API_URL}${item.image}`
                           }
                           alt={item.name}
                           style={{

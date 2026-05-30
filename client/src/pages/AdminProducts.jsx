@@ -17,7 +17,7 @@ const AdminProducts = () => {
     });
     const { token } = useAuth();
     const navigate = useNavigate();
-    const backendUrl = 'http://localhost:5000';
+    const backendUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
     const fetchProducts = async () => {
         try {

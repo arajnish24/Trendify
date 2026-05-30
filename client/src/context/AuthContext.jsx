@@ -32,7 +32,7 @@ export const AuthProvider = ({ children }) => {
                         
                         // Fetch full profile (addresses, cards) in background
                         try {
-                            const response = await fetch('http://localhost:5000/api/users/profile', {
+                            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/users/profile`, {
                                 headers: { Authorization: `Bearer ${token}` }
                             });
                             if (response.ok) {
@@ -64,7 +64,7 @@ export const AuthProvider = ({ children }) => {
 
     const login = async (email, password) => {
         try {
-            const response = await fetch('http://localhost:5000/api/users/login', {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/users/login`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email, password })
@@ -92,12 +92,12 @@ export const AuthProvider = ({ children }) => {
 
     const register = async (name, email, mobile, password) => {
         try {
-            const response = await fetch('http://localhost:5000/api/users/register', {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/users/register`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ name, email, mobile, password })
             });
-            
+
             let data;
             try {
                 data = await response.json();
@@ -126,7 +126,7 @@ export const AuthProvider = ({ children }) => {
     const fetchProfile = async () => {
         if (!token) return;
         try {
-            const response = await fetch('http://localhost:5000/api/users/profile', {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/users/profile`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             const data = await response.json();

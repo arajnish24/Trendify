@@ -21,9 +21,9 @@ const AdminDashboard = () => {
                 const authHeaders = { Authorization: `Bearer ${token}` };
 
                 const [ordersRes, usersRes, productsRes] = await Promise.all([
-                    fetch('http://localhost:5000/api/orders', { headers: authHeaders }),
-                    fetch('http://localhost:5000/api/users', { headers: authHeaders }),
-                    fetch('http://localhost:5000/api/products')
+                    fetch(`${import.meta.env.VITE_API_URL}/api/orders`, { headers: authHeaders }),
+                    fetch(`${import.meta.env.VITE_API_URL}/api/users`, { headers: authHeaders }),
+                    fetch(`${import.meta.env.VITE_API_URL}/api/products`)
                 ]);
 
                 if (!ordersRes.ok || !usersRes.ok || !productsRes.ok) {
@@ -57,7 +57,7 @@ const AdminDashboard = () => {
     const handleStatusUpdate = async (orderId, newStatus) => {
         try {
             const response = await fetch(
-                `http://localhost:5000/api/orders/${orderId}`,
+                `${import.meta.env.VITE_API_URL}/api/orders/${orderId}`,
                 {
                     method: 'PUT',
                     headers: {

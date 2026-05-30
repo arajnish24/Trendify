@@ -71,7 +71,7 @@ const Payment = () => {
     if (paymentMethod === "cod") {
       try {
         setLoading(true);
-        const response = await fetch("http://localhost:5000/api/orders", {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/orders`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -103,7 +103,7 @@ const Payment = () => {
       // ==========================
       // STEP 1: CREATE RAZORPAY ORDER
       // ==========================
-      const response = await fetch("http://localhost:5000/api/payment/order", {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/payment/order`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -140,7 +140,7 @@ const Payment = () => {
         handler: async function (response) {
           try {
             const verifyResponse = await fetch(
-              "http://localhost:5000/api/payment/verify",
+              `${import.meta.env.VITE_API_URL}/api/payment/verify`,
               {
                 method: "POST",
                 headers: {
@@ -165,7 +165,7 @@ const Payment = () => {
                     paidAt: new Date(),
                 };
 
-                const saveOrderResponse = await fetch("http://localhost:5000/api/orders", {
+                const saveOrderResponse = await fetch(`${import.meta.env.VITE_API_URL}/api/orders`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
@@ -358,7 +358,7 @@ const Payment = () => {
                 if (!item) return null;
                 const itemImg = (item.image || '').startsWith("http")
                         ? item.image
-                        : `http://localhost:5000${item.image}`;
+                        : `${import.meta.env.VITE_API_URL}${item.image}`;
                 return (
                   <div key={item._id} className="payment-item">
                     <img

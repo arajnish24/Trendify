@@ -7,7 +7,7 @@ const Home = () => {
     const [trendingProducts, setTrendingProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const { user } = useAuth();
-    const backendUrl = 'http://localhost:5000';
+    const backendUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
     useEffect(() => {
         const fetchTrending = async () => {

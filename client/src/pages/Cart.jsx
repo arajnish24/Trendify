@@ -8,7 +8,7 @@ const Cart = () => {
     const { cart, total, handlingFee, deliveryCharge, finalTotal, removeFromCart, updateQty } = useCart();
     const { user, loading } = useAuth();
     const navigate = useNavigate();
-    const backendUrl = 'http://localhost:5000';
+    const backendUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
     const [suggestions, setSuggestions] = useState([]);
 
