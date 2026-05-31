@@ -96,7 +96,7 @@ Trendify is built using a **Decoupled Client-Server Architecture**, ensuring sca
 ### 1. Clone & Install
 ```bash
 git clone <repository-url>
-cd food-restaurant
+cd food-restaurant, folder name as per the your choice
 
 # Install Backend Dependencies
 cd server
