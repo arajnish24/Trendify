@@ -1,6 +1,6 @@
 # Trendify - Food Restaurant & Ecommerce Platform
 
-Trendify is a modern, full-stack MERN (MongoDB, Express, React, Node.js) application designed for a seamless food restaurant and ecommerce experience. It features a robust product management system, secure user authentication, an integrated shopping cart, and a multi-stage order tracking system with payment gateway integration.
+Trendify is a modern, full-stack MERN (MongoDB, Express, React, Node.js) application designed for a seamless ecommerce experience. It features a robust product management system, secure user authentication, an integrated shopping cart, and a multi-stage order tracking system with payment gateway integration.
 
 ---
 
